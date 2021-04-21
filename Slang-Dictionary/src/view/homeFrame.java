@@ -5,19 +5,30 @@
  */
 package view;
 
-import static javax.swing.JOptionPane.showMessageDialog;
+import java.awt.CardLayout;
+import java.awt.Color;
 
 /**
  *
  * @author Admin
  */
-public class homeFrame extends javax.swing.JFrame {
+public class HomeFrame extends javax.swing.JFrame {
 
     /**
-     * Creates new form homeFrame
+     * Creates new form HomeFrame
      */
-    public homeFrame() {
+    
+    CardLayout mainCardLayout;
+    public HomeFrame() {
         initComponents();
+        this.setLocationRelativeTo(null);
+        mainCardLayout = (CardLayout)(pnMainCard.getLayout());
+    }
+    
+    public void resetColorButton(){
+        Color defaultColor = new Color(204, 204, 204);
+        btnSearchBySlang.setBackground(defaultColor);
+        btnSearchByDefinition.setBackground(defaultColor);
     }
 
     /**
@@ -29,156 +40,152 @@ public class homeFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        panelHome = new javax.swing.JTabbedPane();
-        jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        lbTest = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
-        jPanel4 = new javax.swing.JPanel();
-        jPanel7 = new javax.swing.JPanel();
+        jSplitPane1 = new javax.swing.JSplitPane();
+        panelSidebar = new javax.swing.JPanel();
+        btnSearchByDefinition = new javax.swing.JButton();
+        btnSearchBySlang = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        btnReset = new javax.swing.JButton();
+        btnHistory = new javax.swing.JButton();
+        pnMainCard = new javax.swing.JPanel();
+        pnSearchBySlang = new javax.swing.JPanel();
+        pnSearchByDefinition = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        panelHome.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                panelHomeMouseClicked(evt);
-            }
-        });
+        jSplitPane1.setDividerSize(1);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 532, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 279, Short.MAX_VALUE)
-        );
+        panelSidebar.setBackground(new java.awt.Color(102, 153, 255));
 
-        panelHome.addTab("Tìm kiếm", jPanel1);
-
-        lbTest.setText("jLabel3");
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(135, 135, 135)
-                        .addComponent(jLabel2))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(186, 186, 186)
-                        .addComponent(lbTest)))
-                .addContainerGap(312, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(56, 56, 56)
-                .addComponent(lbTest)
-                .addGap(39, 39, 39)
-                .addComponent(jLabel2)
-                .addContainerGap(170, Short.MAX_VALUE))
-        );
-
-        panelHome.addTab("Lịch sử", jPanel2);
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 532, Short.MAX_VALUE)
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 279, Short.MAX_VALUE)
-        );
-
-        panelHome.addTab("Thêm slang word ", jPanel3);
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 532, Short.MAX_VALUE)
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 279, Short.MAX_VALUE)
-        );
-
-        panelHome.addTab("Chỉnh sửa", jPanel4);
-
-        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-        jPanel7.setLayout(jPanel7Layout);
-        jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 532, Short.MAX_VALUE)
-        );
-        jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 279, Short.MAX_VALUE)
-        );
-
-        panelHome.addTab("Xóa", jPanel7);
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(51, 255, 51));
-        jLabel1.setText("Slang Dictionary");
-
-        btnReset.setText("Reset");
-        btnReset.addActionListener(new java.awt.event.ActionListener() {
+        btnSearchByDefinition.setBackground(new java.awt.Color(204, 204, 204));
+        btnSearchByDefinition.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnSearchByDefinition.setText("Tìm kiếm theo definition");
+        btnSearchByDefinition.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnResetActionPerformed(evt);
+                btnSearchByDefinitionActionPerformed(evt);
             }
         });
+
+        btnSearchBySlang.setBackground(new java.awt.Color(204, 204, 204));
+        btnSearchBySlang.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnSearchBySlang.setText("Tìm kiếm theo slang word");
+        btnSearchBySlang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchBySlangActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Slang Dictionnary");
+
+        btnHistory.setBackground(new java.awt.Color(204, 204, 204));
+        btnHistory.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnHistory.setText("Xem lịch sử tìm kiếm");
+        btnHistory.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHistoryActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelSidebarLayout = new javax.swing.GroupLayout(panelSidebar);
+        panelSidebar.setLayout(panelSidebarLayout);
+        panelSidebarLayout.setHorizontalGroup(
+            panelSidebarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(btnSearchBySlang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnSearchByDefinition, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(panelSidebarLayout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(jLabel1)
+                .addContainerGap(17, Short.MAX_VALUE))
+            .addComponent(btnHistory, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        panelSidebarLayout.setVerticalGroup(
+            panelSidebarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelSidebarLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addComponent(btnSearchBySlang, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(11, 11, 11)
+                .addComponent(btnSearchByDefinition, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnHistory, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(231, Short.MAX_VALUE))
+        );
+
+        jSplitPane1.setLeftComponent(panelSidebar);
+
+        pnMainCard.setLayout(new java.awt.CardLayout());
+
+        pnSearchBySlang.setBackground(new java.awt.Color(102, 255, 0));
+        pnSearchBySlang.setName(""); // NOI18N
+
+        javax.swing.GroupLayout pnSearchBySlangLayout = new javax.swing.GroupLayout(pnSearchBySlang);
+        pnSearchBySlang.setLayout(pnSearchBySlangLayout);
+        pnSearchBySlangLayout.setHorizontalGroup(
+            pnSearchBySlangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 625, Short.MAX_VALUE)
+        );
+        pnSearchBySlangLayout.setVerticalGroup(
+            pnSearchBySlangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 421, Short.MAX_VALUE)
+        );
+
+        pnMainCard.add(pnSearchBySlang, "pnSearchBySlang");
+
+        pnSearchByDefinition.setBackground(new java.awt.Color(255, 0, 0));
+        pnSearchByDefinition.setName(""); // NOI18N
+
+        javax.swing.GroupLayout pnSearchByDefinitionLayout = new javax.swing.GroupLayout(pnSearchByDefinition);
+        pnSearchByDefinition.setLayout(pnSearchByDefinitionLayout);
+        pnSearchByDefinitionLayout.setHorizontalGroup(
+            pnSearchByDefinitionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 625, Short.MAX_VALUE)
+        );
+        pnSearchByDefinitionLayout.setVerticalGroup(
+            pnSearchByDefinitionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 421, Short.MAX_VALUE)
+        );
+
+        pnMainCard.add(pnSearchByDefinition, "pnSearchByDefinition");
+
+        jSplitPane1.setRightComponent(pnMainCard);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelHome)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btnReset)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(163, 163, 163))))
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jSplitPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 830, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 10, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(13, 13, 13)
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnReset)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panelHome, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jSplitPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 423, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 11, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
-        // TODO add your handling code here:
-        //lbTest.setText("123");
-    }//GEN-LAST:event_btnResetActionPerformed
+    private void btnSearchBySlangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchBySlangActionPerformed
 
-    private void panelHomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelHomeMouseClicked
+        mainCardLayout.show(pnMainCard, "pnSearchBySlang");
+        resetColorButton();
+        btnSearchBySlang.setBackground(Color.white);
+    }//GEN-LAST:event_btnSearchBySlangActionPerformed
+
+    private void btnSearchByDefinitionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchByDefinitionActionPerformed
+
+        mainCardLayout.show(pnMainCard, "pnSearchByDefinition");
+        resetColorButton();
+        btnSearchByDefinition.setBackground(Color.white);
+    }//GEN-LAST:event_btnSearchByDefinitionActionPerformed
+
+    private void btnHistoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHistoryActionPerformed
         // TODO add your handling code here:
-//        if (panelHome.getSelectedIndex() == 1){
-//            lbTest.setText("OKE");
-//        }
-    }//GEN-LAST:event_panelHomeMouseClicked
+    }//GEN-LAST:event_btnHistoryActionPerformed
 
     /**
      * @param args the command line arguments
@@ -197,34 +204,33 @@ public class homeFrame extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(homeFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HomeFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(homeFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HomeFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(homeFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HomeFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(homeFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HomeFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new homeFrame().setVisible(true);
+                new HomeFrame().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnReset;
+    private javax.swing.JButton btnHistory;
+    private javax.swing.JButton btnSearchByDefinition;
+    private javax.swing.JButton btnSearchBySlang;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel7;
-    private javax.swing.JLabel lbTest;
-    private javax.swing.JTabbedPane panelHome;
+    private javax.swing.JSplitPane jSplitPane1;
+    private javax.swing.JPanel panelSidebar;
+    private javax.swing.JPanel pnMainCard;
+    private javax.swing.JPanel pnSearchByDefinition;
+    private javax.swing.JPanel pnSearchBySlang;
     // End of variables declaration//GEN-END:variables
 }

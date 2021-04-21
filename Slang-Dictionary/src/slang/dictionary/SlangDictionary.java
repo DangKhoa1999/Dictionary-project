@@ -5,7 +5,7 @@
  */
 package slang.dictionary;
 
-import view.homeFrame;
+import view.HomeFrame;
 
 /**
  *
@@ -18,7 +18,7 @@ public class SlangDictionary {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        homeFrame homeFrm = new homeFrame();
+        HomeFrame homeFrm = new HomeFrame();
         homeFrm.setVisible(true);
     }
     
