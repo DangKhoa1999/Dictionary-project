@@ -7,6 +7,9 @@ package view;
 
 import java.awt.CardLayout;
 import java.awt.Color;
+import java.util.Map;
+import java.util.TreeMap;
+import slang.dictionary.SlangWord;
 
 /**
  *
@@ -21,14 +24,25 @@ public class HomeFrame extends javax.swing.JFrame {
     CardLayout mainCardLayout;
     public HomeFrame() {
         initComponents();
+        SlangWord slHandler = new SlangWord();
         this.setLocationRelativeTo(null);
         mainCardLayout = (CardLayout)(pnMainCard.getLayout());
+        btnSearchBySlang.setBackground(Color.white);
+        //TreeMap<String, String[]> treeData = slHandler.InitData();
+//        for (Map.Entry<String, String[]> entry : treeData.entrySet()) {
+//           System.out.print(entry.getKey() + "`");
+//           for (int i = 0; i < entry.getValue().length; i++)
+//               System.out.print(entry.getValue()[i] + "|");
+//           System.out.print("\n");
+//       }
+        
     }
     
     public void resetColorButton(){
         Color defaultColor = new Color(204, 204, 204);
         btnSearchBySlang.setBackground(defaultColor);
         btnSearchByDefinition.setBackground(defaultColor);
+        btnHistory.setBackground(defaultColor);
     }
 
     /**
@@ -51,6 +65,7 @@ public class HomeFrame extends javax.swing.JFrame {
         pnSearchByDefinition = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jSplitPane1.setDividerSize(1);
 
@@ -155,15 +170,11 @@ public class HomeFrame extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jSplitPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 830, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 10, Short.MAX_VALUE))
+            .addComponent(jSplitPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 830, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jSplitPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 423, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 11, Short.MAX_VALUE))
+            .addComponent(jSplitPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 423, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
