@@ -17,9 +17,8 @@ import java.util.TreeMap;
 public class SlangWord {
     TreeMap<String, String[]> treeData;
     
-    public TreeMap<String, String[]> InitData(){
+    public void InitData(){
         ReadWriteFile handler = new ReadWriteFile();
         treeData = handler.InitDataFromFile();
-        return treeData;
     }
 }
