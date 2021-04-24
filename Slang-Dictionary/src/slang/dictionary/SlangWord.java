@@ -6,6 +6,9 @@
 package slang.dictionary;
 
 import com.sun.org.apache.xml.internal.security.Init;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.TreeMap;
@@ -29,5 +32,18 @@ public class SlangWord {
             listDefinition = treeData.get(key);
         }
         return listDefinition;
+    }
+    
+    public List<String> getDataByDefinition(String definition)
+    {
+        List<String> listSlangWord = new ArrayList<String>();
+        for (Entry<String, String[]> entry : treeData.entrySet()) {
+            List<String> listTemp = Arrays.asList(entry.getValue());
+            if (listTemp.contains(definition))
+            {
+                listSlangWord.add(entry.getKey());
+            }
+        }
+        return listSlangWord;
     }
 }

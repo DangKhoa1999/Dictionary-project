@@ -7,6 +7,7 @@ package view;
 
 import java.awt.CardLayout;
 import java.awt.Color;
+import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 import javax.swing.BorderFactory;
@@ -33,6 +34,8 @@ public class HomeFrame extends javax.swing.JFrame {
         btnSearchBySlang.setBackground(Color.white);
         Border border = BorderFactory.createLineBorder(Color.BLACK);
         lbResult.setBorder(BorderFactory.createCompoundBorder(border, 
+            BorderFactory.createEmptyBorder(20, 20, 10, 10)));
+        lbResultDefinition.setBorder(BorderFactory.createCompoundBorder(border, 
             BorderFactory.createEmptyBorder(20, 20, 10, 10)));
     }
     
@@ -64,6 +67,13 @@ public class HomeFrame extends javax.swing.JFrame {
         btnQuiz = new javax.swing.JButton();
         btnReset = new javax.swing.JButton();
         pnMainCard = new javax.swing.JPanel();
+        pnSearchByDefinition = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        lbResultDefinition = new javax.swing.JTextArea();
+        jLabel4 = new javax.swing.JLabel();
+        tbDefinition = new javax.swing.JTextField();
+        btnSearchKeyDefinition = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
         pnSearchBySlang = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         tbSlangWord = new javax.swing.JTextField();
@@ -71,7 +81,6 @@ public class HomeFrame extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         lbResult = new javax.swing.JTextArea();
-        pnSearchByDefinition = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -200,6 +209,73 @@ public class HomeFrame extends javax.swing.JFrame {
 
         pnMainCard.setLayout(new java.awt.CardLayout());
 
+        pnSearchByDefinition.setName(""); // NOI18N
+
+        lbResultDefinition.setBackground(new java.awt.Color(102, 153, 255));
+        lbResultDefinition.setColumns(20);
+        lbResultDefinition.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lbResultDefinition.setLineWrap(true);
+        lbResultDefinition.setRows(5);
+        lbResultDefinition.setWrapStyleWord(true);
+        lbResultDefinition.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jScrollPane2.setViewportView(lbResultDefinition);
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel4.setText("Nhập từ khóa:");
+
+        tbDefinition.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+
+        btnSearchKeyDefinition.setBackground(new java.awt.Color(102, 153, 255));
+        btnSearchKeyDefinition.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnSearchKeyDefinition.setText("Search");
+        btnSearchKeyDefinition.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnSearchKeyDefinition.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchKeyDefinitionActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel5.setText("Kết quả tìm kiếm");
+
+        javax.swing.GroupLayout pnSearchByDefinitionLayout = new javax.swing.GroupLayout(pnSearchByDefinition);
+        pnSearchByDefinition.setLayout(pnSearchByDefinitionLayout);
+        pnSearchByDefinitionLayout.setHorizontalGroup(
+            pnSearchByDefinitionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnSearchByDefinitionLayout.createSequentialGroup()
+                .addGroup(pnSearchByDefinitionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnSearchByDefinitionLayout.createSequentialGroup()
+                        .addGap(72, 72, 72)
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tbDefinition, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnSearchKeyDefinition, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnSearchByDefinitionLayout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 587, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnSearchByDefinitionLayout.createSequentialGroup()
+                        .addGap(250, 250, 250)
+                        .addComponent(jLabel5)))
+                .addContainerGap(38, Short.MAX_VALUE))
+        );
+        pnSearchByDefinitionLayout.setVerticalGroup(
+            pnSearchByDefinitionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnSearchByDefinitionLayout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addGroup(pnSearchByDefinitionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(tbDefinition, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSearchKeyDefinition, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(46, 46, 46)
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(48, Short.MAX_VALUE))
+        );
+
+        pnMainCard.add(pnSearchByDefinition, "pnSearchByDefinition");
+
         pnSearchBySlang.setName(""); // NOI18N
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -266,22 +342,6 @@ public class HomeFrame extends javax.swing.JFrame {
         );
 
         pnMainCard.add(pnSearchBySlang, "pnSearchBySlang");
-
-        pnSearchByDefinition.setBackground(new java.awt.Color(255, 0, 0));
-        pnSearchByDefinition.setName(""); // NOI18N
-
-        javax.swing.GroupLayout pnSearchByDefinitionLayout = new javax.swing.GroupLayout(pnSearchByDefinition);
-        pnSearchByDefinition.setLayout(pnSearchByDefinitionLayout);
-        pnSearchByDefinitionLayout.setHorizontalGroup(
-            pnSearchByDefinitionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 665, Short.MAX_VALUE)
-        );
-        pnSearchByDefinitionLayout.setVerticalGroup(
-            pnSearchByDefinitionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 421, Short.MAX_VALUE)
-        );
-
-        pnMainCard.add(pnSearchByDefinition, "pnSearchByDefinition");
 
         jSplitPane1.setRightComponent(pnMainCard);
 
@@ -363,6 +423,33 @@ public class HomeFrame extends javax.swing.JFrame {
         tbSlangWord.setText("");
     }//GEN-LAST:event_btnSearchKeySlangActionPerformed
 
+    private void btnSearchKeyDefinitionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchKeyDefinitionActionPerformed
+        // TODO add your handling code here:
+         if (tbDefinition.getText().compareTo("") == 0){
+            return;
+        }
+        lbResultDefinition.setText("");
+        List<String> listSlangWord = slHandler.getDataByDefinition(tbDefinition.getText());
+        if (listSlangWord.size() == 0){  
+            lbResultDefinition.setText("Sorry, no slang words were found with the definition '" + 
+                    tbDefinition.getText() + "' :((");
+            lbResultDefinition.setForeground(Color.RED);
+            System.out.println(lbResultDefinition.getText());
+        }
+        else{
+            String result = "Slang words of definition '" + tbDefinition.getText() + "': ";
+            for (int i = 0; i < listSlangWord.size(); i++){
+                result += listSlangWord.get(i);
+                if (i != listSlangWord.size() - 1){
+                    result += ",";
+                }
+            }
+            lbResultDefinition.setText(result);
+            lbResultDefinition.setForeground(Color.BLACK);
+        }
+        tbDefinition.setText("");
+    }//GEN-LAST:event_btnSearchKeyDefinitionActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -407,17 +494,23 @@ public class HomeFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnReset;
     private javax.swing.JButton btnSearchByDefinition;
     private javax.swing.JButton btnSearchBySlang;
+    private javax.swing.JButton btnSearchKeyDefinition;
     private javax.swing.JButton btnSearchKeySlang;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JTextArea lbResult;
+    private javax.swing.JTextArea lbResultDefinition;
     private javax.swing.JPanel panelSidebar;
     private javax.swing.JPanel pnMainCard;
     private javax.swing.JPanel pnSearchByDefinition;
     private javax.swing.JPanel pnSearchBySlang;
+    private javax.swing.JTextField tbDefinition;
     private javax.swing.JTextField tbSlangWord;
     // End of variables declaration//GEN-END:variables
 }
