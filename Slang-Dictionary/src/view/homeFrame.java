@@ -9,6 +9,8 @@ import java.awt.CardLayout;
 import java.awt.Color;
 import java.util.Map;
 import java.util.TreeMap;
+import javax.swing.BorderFactory;
+import javax.swing.border.Border;
 import slang.dictionary.SlangWord;
 
 /**
@@ -22,12 +24,16 @@ public class HomeFrame extends javax.swing.JFrame {
      */
     
     CardLayout mainCardLayout;
+    SlangWord slHandler = null;
     public HomeFrame() {
         initComponents();
-        SlangWord slHandler = new SlangWord();
+        slHandler = new SlangWord();
         this.setLocationRelativeTo(null);
         mainCardLayout = (CardLayout)(pnMainCard.getLayout());
         btnSearchBySlang.setBackground(Color.white);
+        Border border = BorderFactory.createLineBorder(Color.BLACK);
+        lbResult.setBorder(BorderFactory.createCompoundBorder(border, 
+            BorderFactory.createEmptyBorder(20, 20, 10, 10)));
     }
     
     public void resetColorButton(){
@@ -59,16 +65,15 @@ public class HomeFrame extends javax.swing.JFrame {
         btnReset = new javax.swing.JButton();
         pnMainCard = new javax.swing.JPanel();
         pnSearchBySlang = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         tbSlangWord = new javax.swing.JTextField();
         btnSearchKeySlang = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        lbResult = new javax.swing.JTextArea();
         pnSearchByDefinition = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setResizable(false);
 
         jSplitPane1.setDividerSize(1);
 
@@ -197,28 +202,6 @@ public class HomeFrame extends javax.swing.JFrame {
 
         pnSearchBySlang.setName(""); // NOI18N
 
-        jPanel1.setBackground(new java.awt.Color(102, 153, 255));
-        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        jLabel4.setText("HEHEHEHE");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(70, 70, 70)
-                .addComponent(jLabel4)
-                .addContainerGap(445, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(63, 63, 63)
-                .addComponent(jLabel4)
-                .addContainerGap(160, Short.MAX_VALUE))
-        );
-
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setText("Nhập từ khóa:");
 
@@ -228,30 +211,44 @@ public class HomeFrame extends javax.swing.JFrame {
         btnSearchKeySlang.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btnSearchKeySlang.setText("Search");
         btnSearchKeySlang.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnSearchKeySlang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchKeySlangActionPerformed(evt);
+            }
+        });
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel3.setText("Kết quả tìm kiếm");
+
+        lbResult.setBackground(new java.awt.Color(102, 153, 255));
+        lbResult.setColumns(20);
+        lbResult.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lbResult.setLineWrap(true);
+        lbResult.setRows(5);
+        lbResult.setWrapStyleWord(true);
+        lbResult.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jScrollPane1.setViewportView(lbResult);
 
         javax.swing.GroupLayout pnSearchBySlangLayout = new javax.swing.GroupLayout(pnSearchBySlang);
         pnSearchBySlang.setLayout(pnSearchBySlangLayout);
         pnSearchBySlangLayout.setHorizontalGroup(
             pnSearchBySlangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnSearchBySlangLayout.createSequentialGroup()
-                .addContainerGap(24, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(23, Short.MAX_VALUE))
             .addGroup(pnSearchBySlangLayout.createSequentialGroup()
-                .addGap(72, 72, 72)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tbSlangWord, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnSearchKeySlang, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnSearchBySlangLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel3)
-                .addGap(248, 248, 248))
+                .addGroup(pnSearchBySlangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnSearchBySlangLayout.createSequentialGroup()
+                        .addGap(72, 72, 72)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tbSlangWord, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnSearchKeySlang, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnSearchBySlangLayout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 587, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnSearchBySlangLayout.createSequentialGroup()
+                        .addGap(250, 250, 250)
+                        .addComponent(jLabel3)))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
         pnSearchBySlangLayout.setVerticalGroup(
             pnSearchBySlangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -261,11 +258,11 @@ public class HomeFrame extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addComponent(tbSlangWord, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSearchKeySlang, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(36, 36, 36)
+                .addGap(46, 46, 46)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(48, Short.MAX_VALUE))
         );
 
         pnMainCard.add(pnSearchBySlang, "pnSearchBySlang");
@@ -277,7 +274,7 @@ public class HomeFrame extends javax.swing.JFrame {
         pnSearchByDefinition.setLayout(pnSearchByDefinitionLayout);
         pnSearchByDefinitionLayout.setHorizontalGroup(
             pnSearchByDefinitionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 616, Short.MAX_VALUE)
+            .addGap(0, 665, Short.MAX_VALUE)
         );
         pnSearchByDefinitionLayout.setVerticalGroup(
             pnSearchByDefinitionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -292,11 +289,11 @@ public class HomeFrame extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 830, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jSplitPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 423, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -339,6 +336,32 @@ public class HomeFrame extends javax.swing.JFrame {
     private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnResetActionPerformed
+
+    private void btnSearchKeySlangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchKeySlangActionPerformed
+        // TODO add your handling code here:
+        if (tbSlangWord.getText().compareTo("") == 0){
+            return;
+        }
+        lbResult.setText("");
+        String[] listDefinition = slHandler.getDataBySlangWord(tbSlangWord.getText());
+        if (listDefinition == null){           
+            lbResult.setText("Rất tiếc, không tìm thấy Slang word nào với từ khóa '" + 
+                    tbSlangWord.getText() + "' :((");
+            lbResult.setForeground(Color.RED);
+        }
+        else{
+            String result = "Definitons of '" + tbSlangWord.getText() + "': ";
+            for (int i = 0; i < listDefinition.length; i++){
+                result += listDefinition[i];
+                if (i != listDefinition.length - 1){
+                    result += ",";
+                }
+            }
+            lbResult.setText(result);
+            lbResult.setForeground(Color.BLACK);
+        }
+        tbSlangWord.setText("");
+    }//GEN-LAST:event_btnSearchKeySlangActionPerformed
 
     /**
      * @param args the command line arguments
@@ -388,9 +411,9 @@ public class HomeFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSplitPane jSplitPane1;
+    private javax.swing.JTextArea lbResult;
     private javax.swing.JPanel panelSidebar;
     private javax.swing.JPanel pnMainCard;
     private javax.swing.JPanel pnSearchByDefinition;
