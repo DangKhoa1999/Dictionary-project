@@ -17,8 +17,17 @@ import java.util.TreeMap;
 public class SlangWord {
     TreeMap<String, String[]> treeData;
     
-    public void InitData(){
+    public SlangWord(){
         ReadWriteFile handler = new ReadWriteFile();
         treeData = handler.InitDataFromFile();
+    }
+    
+    public String[] getDataBySlangWord(String key)
+    {
+        String[] listDefinition = null;
+        if (treeData.containsKey(key)){
+            listDefinition = treeData.get(key);
+        }
+        return listDefinition;
     }
 }
