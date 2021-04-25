@@ -11,6 +11,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Random;
 import java.util.TreeMap;
 
 /**
@@ -60,5 +61,24 @@ public class SlangWord {
     public List<String> initHistoryData(){
         listHitoryData = handlerFile.initHistoryDataFromFile();
         return listHitoryData;
+    }
+    
+    public void resetData(){
+        handlerFile.resetData();
+    }
+    
+    public List<String> randomSlangWords(){
+        Random rd = new Random();
+        int numOfRandom = rd.nextInt(treeData.size());
+        List<String> slangRandom = new ArrayList<String>(treeData.keySet());
+        List<String> resultData = new ArrayList<String>();
+        String key = slangRandom.get(numOfRandom);
+        resultData.add(key); 
+        
+        String[] listTemp = treeData.get(key);
+        for (int i = 0; i < listTemp.length; i++){
+            resultData.add(listTemp[i]);
+        }
+        return resultData;
     }
 }

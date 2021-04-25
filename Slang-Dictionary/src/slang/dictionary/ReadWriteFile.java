@@ -55,12 +55,7 @@ public class ReadWriteFile {
            fileReader = new FileReader("data.txt");
            bufferedReader = new BufferedReader(fileReader);
            String line;
-           boolean isFirstLine = true;
            while ((line = bufferedReader.readLine()) != null){
-               if (isFirstLine){
-                   isFirstLine = false;
-                   continue;
-               }
                if (line.equals("")){
                    break;
                }
@@ -68,7 +63,7 @@ public class ReadWriteFile {
                if (data.length == 1){
                    continue;
                }
-               String [] value = data[1].split("\\|");
+               String [] value = data[1].split("\\| ");
                mapData.put(data[0], value);
            }
        }
@@ -149,5 +144,28 @@ public class ReadWriteFile {
                 e.printStackTrace();
             }
         }
+    }
+    
+    public void resetData(){
+        FileWriter fileWriter = null;
+        BufferedWriter bufferedWriter = null;
+        try{
+            fileWriter = new FileWriter("data.txt");
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        finally{
+            try {        
+                if (bufferedWriter != null){
+                    bufferedWriter.close();
+                }  
+                if (fileWriter != null){
+                    fileWriter.close();
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }     
     }
 }
