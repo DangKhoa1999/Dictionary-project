@@ -19,10 +19,12 @@ import java.util.TreeMap;
  */
 public class SlangWord {
     TreeMap<String, String[]> treeData;
+    List<String> listHitoryData;
+    ReadWriteFile handlerFile = new ReadWriteFile();
     
     public SlangWord(){
-        ReadWriteFile handler = new ReadWriteFile();
-        treeData = handler.InitDataFromFile();
+        treeData = handlerFile.initDataFromFile();
+        listHitoryData = handlerFile.initHistoryDataFromFile();
     }
     
     public String[] getDataBySlangWord(String key)
@@ -45,5 +47,18 @@ public class SlangWord {
             }
         }
         return listSlangWord;
+    }
+    
+    public void saveHistoryData(String keyWord){
+        if (listHitoryData.contains(keyWord)){
+            return;
+        }
+        listHitoryData.add(0, keyWord);
+        handlerFile.saveHistoryData(listHitoryData);
+    }
+    
+    public List<String> initHistoryData(){
+        listHitoryData = handlerFile.initHistoryDataFromFile();
+        return listHitoryData;
     }
 }

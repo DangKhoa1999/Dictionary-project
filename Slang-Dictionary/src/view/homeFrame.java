@@ -32,11 +32,17 @@ public class HomeFrame extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         mainCardLayout = (CardLayout)(pnMainCard.getLayout());
         btnSearchBySlang.setBackground(Color.white);
+        mainCardLayout.show(pnMainCard, "pnSearchBySlang");
         Border border = BorderFactory.createLineBorder(Color.BLACK);
         lbResult.setBorder(BorderFactory.createCompoundBorder(border, 
             BorderFactory.createEmptyBorder(20, 20, 10, 10)));
         lbResultDefinition.setBorder(BorderFactory.createCompoundBorder(border, 
             BorderFactory.createEmptyBorder(20, 20, 10, 10)));
+        lbHistoryResult.setBorder(BorderFactory.createCompoundBorder(border, 
+            BorderFactory.createEmptyBorder(20, 20, 10, 10)));
+        lbResult.setEditable(false);
+        lbResultDefinition.setEditable(false);
+        lbHistoryResult.setEditable(false);
     }
     
     public void resetColorButton(){
@@ -81,6 +87,10 @@ public class HomeFrame extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         lbResult = new javax.swing.JTextArea();
+        pnHistory = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        lbHistoryResult = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -319,12 +329,13 @@ public class HomeFrame extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnSearchKeySlang, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(pnSearchBySlangLayout.createSequentialGroup()
-                        .addGap(40, 40, 40)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 587, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnSearchBySlangLayout.createSequentialGroup()
                         .addGap(250, 250, 250)
                         .addComponent(jLabel3)))
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnSearchBySlangLayout.createSequentialGroup()
+                .addGap(0, 41, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 587, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37))
         );
         pnSearchBySlangLayout.setVerticalGroup(
             pnSearchBySlangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -342,6 +353,43 @@ public class HomeFrame extends javax.swing.JFrame {
         );
 
         pnMainCard.add(pnSearchBySlang, "pnSearchBySlang");
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel6.setText("The history of the slang words searched");
+
+        lbHistoryResult.setBackground(new java.awt.Color(102, 153, 255));
+        lbHistoryResult.setColumns(20);
+        lbHistoryResult.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lbHistoryResult.setLineWrap(true);
+        lbHistoryResult.setRows(5);
+        lbHistoryResult.setWrapStyleWord(true);
+        lbHistoryResult.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jScrollPane3.setViewportView(lbHistoryResult);
+
+        javax.swing.GroupLayout pnHistoryLayout = new javax.swing.GroupLayout(pnHistory);
+        pnHistory.setLayout(pnHistoryLayout);
+        pnHistoryLayout.setHorizontalGroup(
+            pnHistoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnHistoryLayout.createSequentialGroup()
+                .addContainerGap(40, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 587, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(38, 38, 38))
+            .addGroup(pnHistoryLayout.createSequentialGroup()
+                .addGap(150, 150, 150)
+                .addComponent(jLabel6)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        pnHistoryLayout.setVerticalGroup(
+            pnHistoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnHistoryLayout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(28, Short.MAX_VALUE))
+        );
+
+        pnMainCard.add(pnHistory, "pnHistory");
 
         jSplitPane1.setRightComponent(pnMainCard);
 
@@ -375,6 +423,16 @@ public class HomeFrame extends javax.swing.JFrame {
 
     private void btnHistoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHistoryActionPerformed
         // TODO add your handling code here:
+        mainCardLayout.show(pnMainCard, "pnHistory");
+        resetColorButton();
+        btnHistory.setBackground(Color.white);
+        String rs = "";
+        List<String> listDataHistory = slHandler.initHistoryData();
+        for (int i = 0; i < listDataHistory.size(); i++){
+            rs += (i + 1) + ". " + listDataHistory.get(i) + "\n";
+        }
+        lbHistoryResult.setText(rs);
+        
     }//GEN-LAST:event_btnHistoryActionPerformed
 
     private void addNewSlangWordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addNewSlangWordActionPerformed
@@ -405,7 +463,7 @@ public class HomeFrame extends javax.swing.JFrame {
         lbResult.setText("");
         String[] listDefinition = slHandler.getDataBySlangWord(tbSlangWord.getText());
         if (listDefinition == null){           
-            lbResult.setText("Rất tiếc, không tìm thấy Slang word nào với từ khóa '" + 
+            lbResult.setText("Sorry, no slang words were found with key word '" + 
                     tbSlangWord.getText() + "' :((");
             lbResult.setForeground(Color.RED);
         }
@@ -414,12 +472,13 @@ public class HomeFrame extends javax.swing.JFrame {
             for (int i = 0; i < listDefinition.length; i++){
                 result += listDefinition[i];
                 if (i != listDefinition.length - 1){
-                    result += ",";
+                    result += ", ";
                 }
             }
             lbResult.setText(result);
             lbResult.setForeground(Color.BLACK);
         }
+        slHandler.saveHistoryData(tbSlangWord.getText());
         tbSlangWord.setText("");
     }//GEN-LAST:event_btnSearchKeySlangActionPerformed
 
@@ -434,14 +493,13 @@ public class HomeFrame extends javax.swing.JFrame {
             lbResultDefinition.setText("Sorry, no slang words were found with the definition '" + 
                     tbDefinition.getText() + "' :((");
             lbResultDefinition.setForeground(Color.RED);
-            System.out.println(lbResultDefinition.getText());
         }
         else{
             String result = "Slang words of definition '" + tbDefinition.getText() + "': ";
             for (int i = 0; i < listSlangWord.size(); i++){
                 result += listSlangWord.get(i);
                 if (i != listSlangWord.size() - 1){
-                    result += ",";
+                    result += ", ";
                 }
             }
             lbResultDefinition.setText(result);
@@ -501,12 +559,16 @@ public class HomeFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSplitPane jSplitPane1;
+    private javax.swing.JTextArea lbHistoryResult;
     private javax.swing.JTextArea lbResult;
     private javax.swing.JTextArea lbResultDefinition;
     private javax.swing.JPanel panelSidebar;
+    private javax.swing.JPanel pnHistory;
     private javax.swing.JPanel pnMainCard;
     private javax.swing.JPanel pnSearchByDefinition;
     private javax.swing.JPanel pnSearchBySlang;
