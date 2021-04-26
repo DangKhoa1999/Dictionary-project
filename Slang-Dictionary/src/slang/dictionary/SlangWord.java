@@ -81,4 +81,17 @@ public class SlangWord {
         }
         return resultData;
     }
+    
+    public boolean deleteSlangWord(String key){
+        if (treeData.containsKey(key)){
+            treeData.remove(key);
+            saveDataToFile();
+            return true;
+        }
+        return false;
+    }
+    
+    public void saveDataToFile(){
+        handlerFile.writeData(treeData);
+    }
 }
