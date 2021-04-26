@@ -27,7 +27,12 @@ public class ReadWriteFile {
             fileWriter = new FileWriter("data.txt");
             bufferedWriter = new BufferedWriter(fileWriter);
             for (Map.Entry<String, String[]> entry : treeMap.entrySet()){
-                bufferedWriter.write(entry.getKey() + "`" + entry.getValue() + "\n");
+                bufferedWriter.write(entry.getKey() + "`");
+                bufferedWriter.write(entry.getValue()[0]);
+                for (int i = 1; i < entry.getValue().length; i++){
+                    bufferedWriter.write("| " + entry.getValue()[i]);
+                }
+                bufferedWriter.write("\n");
             }
         }
         catch(Exception e){
