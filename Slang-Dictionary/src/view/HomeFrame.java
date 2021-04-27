@@ -32,6 +32,7 @@ public class HomeFrame extends javax.swing.JFrame {
         slHandler = new SlangWord();
         this.setLocationRelativeTo(null);
         dlReset.setLocationRelativeTo(null);
+        dlDelete.setLocationRelativeTo(null);
         mainCardLayout = (CardLayout)(pnMainCard.getLayout());
         btnSearchBySlang.setBackground(Color.white);
         mainCardLayout.show(pnMainCard, "pnSearchBySlang");
@@ -80,6 +81,10 @@ public class HomeFrame extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         btnOkeConfirmReset = new javax.swing.JButton();
         btnCloseConfirmReset = new javax.swing.JButton();
+        dlDelete = new javax.swing.JDialog();
+        jLabel10 = new javax.swing.JLabel();
+        btnOkeConfirmDelete = new javax.swing.JButton();
+        btnCloseConfirmDelete = new javax.swing.JButton();
         jSplitPane1 = new javax.swing.JSplitPane();
         panelSidebar = new javax.swing.JPanel();
         btnSearchByDefinition = new javax.swing.JButton();
@@ -132,7 +137,7 @@ public class HomeFrame extends javax.swing.JFrame {
         dlReset.setModal(true);
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel7.setText("Are you sure to reset the slang words list?");
+        jLabel7.setText("Are you sure to reset the slang word list?");
 
         btnOkeConfirmReset.setBackground(new java.awt.Color(255, 0, 0));
         btnOkeConfirmReset.setText("OKE");
@@ -163,7 +168,7 @@ public class HomeFrame extends javax.swing.JFrame {
                         .addComponent(btnOkeConfirmReset, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(53, 53, 53)
                         .addComponent(btnCloseConfirmReset, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
         dlResetLayout.setVerticalGroup(
             dlResetLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -178,6 +183,57 @@ public class HomeFrame extends javax.swing.JFrame {
         );
 
         dlReset.getAccessibleContext().setAccessibleDescription("");
+
+        dlDelete.setTitle("Warning");
+        dlDelete.setIconImage(null);
+        dlDelete.setMinimumSize(new java.awt.Dimension(350, 150));
+        dlDelete.setModal(true);
+
+        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel10.setText("Are you sure to delete this slang word?");
+
+        btnOkeConfirmDelete.setBackground(new java.awt.Color(255, 0, 0));
+        btnOkeConfirmDelete.setText("OKE");
+        btnOkeConfirmDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOkeConfirmDeleteActionPerformed(evt);
+            }
+        });
+
+        btnCloseConfirmDelete.setText("Close");
+        btnCloseConfirmDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCloseConfirmDeleteActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout dlDeleteLayout = new javax.swing.GroupLayout(dlDelete.getContentPane());
+        dlDelete.getContentPane().setLayout(dlDeleteLayout);
+        dlDeleteLayout.setHorizontalGroup(
+            dlDeleteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dlDeleteLayout.createSequentialGroup()
+                .addGroup(dlDeleteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(dlDeleteLayout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addComponent(jLabel10))
+                    .addGroup(dlDeleteLayout.createSequentialGroup()
+                        .addGap(41, 41, 41)
+                        .addComponent(btnOkeConfirmDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(53, 53, 53)
+                        .addComponent(btnCloseConfirmDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(51, Short.MAX_VALUE))
+        );
+        dlDeleteLayout.setVerticalGroup(
+            dlDeleteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dlDeleteLayout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(jLabel10)
+                .addGap(27, 27, 27)
+                .addGroup(dlDeleteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnOkeConfirmDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCloseConfirmDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(27, Short.MAX_VALUE))
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -422,7 +478,7 @@ public class HomeFrame extends javax.swing.JFrame {
 
         btnRandomAction.setBackground(new java.awt.Color(204, 204, 204));
         btnRandomAction.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        btnRandomAction.setText("Click Here to random");
+        btnRandomAction.setText("Click Here to random slang word");
         btnRandomAction.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRandomActionActionPerformed(evt);
@@ -800,12 +856,14 @@ public class HomeFrame extends javax.swing.JFrame {
     private void btnSearchKeySlangModifyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchKeySlangModifyActionPerformed
         // TODO add your handling code here:
         if (tbSlangWordModify.getText().compareTo("") == 0){
+            tbSlangWordModify.setText("");
             return;
         }
         lbResultModify.setText("");
         String[] listDefinition = slHandler.getDataBySlangWord(tbSlangWordModify.getText());
         if (listDefinition == null){
-            JOptionPane.showMessageDialog(null, "No slang word found with the keyword entered!!!", "Error", JOptionPane.ERROR_MESSAGE);;
+            JOptionPane.showMessageDialog(null, "No slang word found with the keyword entered!!!", "Error", JOptionPane.ERROR_MESSAGE);
+            tbSlangWordModify.setText("");
         }
         else{
             String result = "";
@@ -817,25 +875,14 @@ public class HomeFrame extends javax.swing.JFrame {
             }
             lbResultModify.setText(result);
         }
-        slHandler.saveHistoryData(tbSlangWord.getText());
     }//GEN-LAST:event_btnSearchKeySlangModifyActionPerformed
 
     private void btnDeleteSlangWordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteSlangWordActionPerformed
         // TODO add your handling code here:
         if (tbSlangWordModify.getText().compareTo("") == 0){
             return;
-        }
-        
-        boolean resultDelete = slHandler.deleteSlangWord(tbSlangWordModify.getText());
-        
-        if (resultDelete){
-            JOptionPane.showMessageDialog(null, "Delete was successful!!!");
-            tbSlangWordModify.setText("");
-            lbResultModify.setText("");
-        }
-        else{
-            JOptionPane.showMessageDialog(null, "Deleting failed!!!", "Error", JOptionPane.ERROR_MESSAGE);
-        }
+        }       
+        dlDelete.setVisible(true);
     }//GEN-LAST:event_btnDeleteSlangWordActionPerformed
 
     private void btnUpdateSlangWordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateSlangWordActionPerformed
@@ -845,9 +892,40 @@ public class HomeFrame extends javax.swing.JFrame {
         }
         if (lbResultModify.getText().compareTo("") == 0){
             JOptionPane.showMessageDialog(null, "Definitions cannot be empty!!!", "Warning", JOptionPane.WARNING_MESSAGE);
-
+            return;
         }
+        String key = tbSlangWordModify.getText();
+        String newData = lbResultModify.getText();
+        
+        boolean resultUpdate = slHandler.updateSlangWord(key, newData);
+        if (resultUpdate){
+            JOptionPane.showMessageDialog(null, "Update was successful!!!");
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Update failed!!!", "Error", JOptionPane.ERROR_MESSAGE);
+            lbResultModify.setText("");
+        }
+        
     }//GEN-LAST:event_btnUpdateSlangWordActionPerformed
+
+    private void btnOkeConfirmDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOkeConfirmDeleteActionPerformed
+        // TODO add your handling code here:
+        dlDelete.setVisible(false);
+        boolean resultDelete = slHandler.deleteSlangWord(tbSlangWordModify.getText());
+        if (resultDelete){
+            JOptionPane.showMessageDialog(null, "Delete was successful!!!");
+            tbSlangWordModify.setText("");
+            lbResultModify.setText("");
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Delete failed!!!", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnOkeConfirmDeleteActionPerformed
+
+    private void btnCloseConfirmDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseConfirmDeleteActionPerformed
+        // TODO add your handling code here:
+        dlDelete.setVisible(false);
+    }//GEN-LAST:event_btnCloseConfirmDeleteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -885,10 +963,12 @@ public class HomeFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCloseConfirmDelete;
     private javax.swing.JButton btnCloseConfirmReset;
     private javax.swing.JButton btnDeleteSlangWord;
     private javax.swing.JButton btnHistory;
     private javax.swing.JButton btnModify;
+    private javax.swing.JButton btnOkeConfirmDelete;
     private javax.swing.JButton btnOkeConfirmReset;
     private javax.swing.JButton btnQuiz;
     private javax.swing.JButton btnRandom;
@@ -901,8 +981,10 @@ public class HomeFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnSearchKeySlangModify;
     private javax.swing.JButton btnUpdateSlangWord;
     private javax.swing.JButton btnaddNewSlangWord;
+    private javax.swing.JDialog dlDelete;
     private javax.swing.JDialog dlReset;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

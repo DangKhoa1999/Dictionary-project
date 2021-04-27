@@ -91,6 +91,17 @@ public class SlangWord {
         return false;
     }
     
+    public boolean updateSlangWord(String key, String newData){
+        newData = newData.replace(", ", ",");
+        String[] newValue = newData.split(",");
+        if (treeData.containsKey(key)){
+            treeData.put(key, newValue);
+            saveDataToFile();
+            return true;
+        }
+        return false;
+    }
+    
     public void saveDataToFile(){
         handlerFile.writeData(treeData);
     }

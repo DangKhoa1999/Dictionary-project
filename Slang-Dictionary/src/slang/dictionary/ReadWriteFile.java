@@ -153,7 +153,6 @@ public class ReadWriteFile {
     
     public void resetData(){
         FileWriter fileWriter = null;
-        BufferedWriter bufferedWriter = null;
         try{
             fileWriter = new FileWriter("data.txt");
         }
@@ -162,9 +161,6 @@ public class ReadWriteFile {
         }
         finally{
             try {        
-                if (bufferedWriter != null){
-                    bufferedWriter.close();
-                }  
                 if (fileWriter != null){
                     fileWriter.close();
                 }
