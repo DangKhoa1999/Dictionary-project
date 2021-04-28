@@ -102,6 +102,35 @@ public class SlangWord {
         return false;
     }
     
+    public boolean checkSlangWordExist(String key) {
+        if (treeData.containsKey(key)){
+            return true;
+        }
+        return false;
+    }
+    
+    public void addSlangWord(String key, String newData, int type) {
+        newData = newData.replace(", ", ",");
+        String[] newValue = newData.split(",");
+        if (type == 0){ // Add new slang word
+            treeData.put(key, newValue);
+        }
+        else if (type == 1){ // Overwrite
+            updateSlangWord(key, newData);
+        }
+        else{ // Duplicate
+            String[] currentDefinitions = treeData.get(key);
+            String rsDefinitions = "";
+            for (int i = 0; i < currentDefinitions.length; i++){
+                rsDefinitions += currentDefinitions[i] + ",";
+            }
+            rsDefinitions += newData;
+            String[] listAllDefinition = rsDefinitions.split(",");
+            treeData.put(key, listAllDefinition);
+        }
+        saveDataToFile();
+    }
+    
     public void saveDataToFile(){
         handlerFile.writeData(treeData);
     }
