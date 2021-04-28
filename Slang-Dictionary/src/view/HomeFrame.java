@@ -33,6 +33,7 @@ public class HomeFrame extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         dlReset.setLocationRelativeTo(null);
         dlDelete.setLocationRelativeTo(null);
+        dlConfirmAddSlangWord.setLocationRelativeTo(null);
         mainCardLayout = (CardLayout)(pnMainCard.getLayout());
         btnSearchBySlang.setBackground(Color.white);
         mainCardLayout.show(pnMainCard, "pnSearchBySlang");
@@ -66,6 +67,11 @@ public class HomeFrame extends javax.swing.JFrame {
     public void resetData(){
         lbResultDefinition.setText("");
         lbResult.setText("");
+        tbSlangWordAddNew.setText("");
+        tbDefinitionAddNew.setText("");
+        tbDefinition.setText("");
+        tbSlangWord.setText("");
+        lbResultRandom.setText("");
     }
 
     /**
@@ -85,6 +91,11 @@ public class HomeFrame extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         btnOkeConfirmDelete = new javax.swing.JButton();
         btnCloseConfirmDelete = new javax.swing.JButton();
+        dlConfirmAddSlangWord = new javax.swing.JDialog();
+        jLabel14 = new javax.swing.JLabel();
+        btnOverWrite = new javax.swing.JButton();
+        btnDuplicate = new javax.swing.JButton();
+        btnCloseConfirmAdd = new javax.swing.JButton();
         jSplitPane1 = new javax.swing.JSplitPane();
         panelSidebar = new javax.swing.JPanel();
         btnSearchByDefinition = new javax.swing.JButton();
@@ -129,6 +140,13 @@ public class HomeFrame extends javax.swing.JFrame {
         btnUpdateSlangWord = new javax.swing.JButton();
         btnDeleteSlangWord = new javax.swing.JButton();
         pnAddNewSlangWord = new javax.swing.JPanel();
+        jLabel11 = new javax.swing.JLabel();
+        tbSlangWordAddNew = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        tbDefinitionAddNew = new javax.swing.JTextArea();
+        btnActionAddSlangWord = new javax.swing.JButton();
+        jLabel13 = new javax.swing.JLabel();
         pnQuiz = new javax.swing.JPanel();
 
         dlReset.setTitle("Warning");
@@ -232,6 +250,68 @@ public class HomeFrame extends javax.swing.JFrame {
                 .addGroup(dlDeleteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnOkeConfirmDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCloseConfirmDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(27, Short.MAX_VALUE))
+        );
+
+        dlConfirmAddSlangWord.setTitle("Notification");
+        dlConfirmAddSlangWord.setIconImage(null);
+        dlConfirmAddSlangWord.setMinimumSize(new java.awt.Dimension(450, 150));
+        dlConfirmAddSlangWord.setModal(true);
+
+        jLabel14.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel14.setText("This Slang word already exists, please choose an option?");
+
+        btnOverWrite.setBackground(new java.awt.Color(153, 255, 153));
+        btnOverWrite.setText("Overwrite");
+        btnOverWrite.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOverWriteActionPerformed(evt);
+            }
+        });
+
+        btnDuplicate.setBackground(new java.awt.Color(102, 153, 255));
+        btnDuplicate.setText("Duplicate");
+        btnDuplicate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDuplicateActionPerformed(evt);
+            }
+        });
+
+        btnCloseConfirmAdd.setText("Close");
+        btnCloseConfirmAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCloseConfirmAddActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout dlConfirmAddSlangWordLayout = new javax.swing.GroupLayout(dlConfirmAddSlangWord.getContentPane());
+        dlConfirmAddSlangWord.getContentPane().setLayout(dlConfirmAddSlangWordLayout);
+        dlConfirmAddSlangWordLayout.setHorizontalGroup(
+            dlConfirmAddSlangWordLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dlConfirmAddSlangWordLayout.createSequentialGroup()
+                .addGroup(dlConfirmAddSlangWordLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(dlConfirmAddSlangWordLayout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addComponent(jLabel14))
+                    .addGroup(dlConfirmAddSlangWordLayout.createSequentialGroup()
+                        .addGap(41, 41, 41)
+                        .addComponent(btnOverWrite, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(32, 32, 32)
+                        .addComponent(btnDuplicate, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(39, 39, 39)
+                        .addComponent(btnCloseConfirmAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        dlConfirmAddSlangWordLayout.setVerticalGroup(
+            dlConfirmAddSlangWordLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dlConfirmAddSlangWordLayout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(jLabel14)
+                .addGap(27, 27, 27)
+                .addGroup(dlConfirmAddSlangWordLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnOverWrite, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnDuplicate, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCloseConfirmAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(27, Short.MAX_VALUE))
         );
 
@@ -476,7 +556,7 @@ public class HomeFrame extends javax.swing.JFrame {
         lbResultRandom.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jScrollPane4.setViewportView(lbResultRandom);
 
-        btnRandomAction.setBackground(new java.awt.Color(204, 204, 204));
+        btnRandomAction.setBackground(new java.awt.Color(153, 255, 153));
         btnRandomAction.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnRandomAction.setText("Click Here to random slang word");
         btnRandomAction.addActionListener(new java.awt.event.ActionListener() {
@@ -606,6 +686,7 @@ public class HomeFrame extends javax.swing.JFrame {
         jScrollPane5.setViewportView(lbResultModify);
 
         btnUpdateSlangWord.setBackground(new java.awt.Color(153, 255, 153));
+        btnUpdateSlangWord.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnUpdateSlangWord.setText("Update");
         btnUpdateSlangWord.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -614,6 +695,7 @@ public class HomeFrame extends javax.swing.JFrame {
         });
 
         btnDeleteSlangWord.setBackground(new java.awt.Color(255, 0, 0));
+        btnDeleteSlangWord.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnDeleteSlangWord.setText("Delete");
         btnDeleteSlangWord.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -670,15 +752,70 @@ public class HomeFrame extends javax.swing.JFrame {
 
         pnMainCard.add(pnModify, "pnModify");
 
+        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel11.setText("Input slang word:");
+
+        tbSlangWordAddNew.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+
+        jLabel12.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel12.setText("Input definitions:");
+
+        tbDefinitionAddNew.setColumns(20);
+        tbDefinitionAddNew.setLineWrap(true);
+        tbDefinitionAddNew.setRows(5);
+        tbDefinitionAddNew.setWrapStyleWord(true);
+        tbDefinitionAddNew.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jScrollPane6.setViewportView(tbDefinitionAddNew);
+
+        btnActionAddSlangWord.setBackground(new java.awt.Color(153, 255, 153));
+        btnActionAddSlangWord.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnActionAddSlangWord.setText("Add slang word");
+        btnActionAddSlangWord.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActionAddSlangWordActionPerformed(evt);
+            }
+        });
+
+        jLabel13.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
+        jLabel13.setText("Notice: the definitions are separated by the character \",\"");
+
         javax.swing.GroupLayout pnAddNewSlangWordLayout = new javax.swing.GroupLayout(pnAddNewSlangWord);
         pnAddNewSlangWord.setLayout(pnAddNewSlangWordLayout);
         pnAddNewSlangWordLayout.setHorizontalGroup(
             pnAddNewSlangWordLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 665, Short.MAX_VALUE)
+            .addGroup(pnAddNewSlangWordLayout.createSequentialGroup()
+                .addGap(89, 89, 89)
+                .addGroup(pnAddNewSlangWordLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel12)
+                    .addComponent(jLabel11))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(pnAddNewSlangWordLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnActionAddSlangWord, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(pnAddNewSlangWordLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jScrollPane6, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(tbSlangWordAddNew, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 331, Short.MAX_VALUE))
+                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 397, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
         pnAddNewSlangWordLayout.setVerticalGroup(
             pnAddNewSlangWordLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 421, Short.MAX_VALUE)
+            .addGroup(pnAddNewSlangWordLayout.createSequentialGroup()
+                .addGap(44, 44, 44)
+                .addGroup(pnAddNewSlangWordLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel11)
+                    .addComponent(tbSlangWordAddNew, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(pnAddNewSlangWordLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnAddNewSlangWordLayout.createSequentialGroup()
+                        .addGap(70, 70, 70)
+                        .addComponent(jLabel12))
+                    .addGroup(pnAddNewSlangWordLayout.createSequentialGroup()
+                        .addGap(38, 38, 38)
+                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel13)
+                .addGap(38, 38, 38)
+                .addComponent(btnActionAddSlangWord, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(65, Short.MAX_VALUE))
         );
 
         pnMainCard.add(pnAddNewSlangWord, "pnAddNewSlangWord");
@@ -730,6 +867,7 @@ public class HomeFrame extends javax.swing.JFrame {
 
     private void btnHistoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHistoryActionPerformed
         // TODO add your handling code here:
+        resetData();
         mainCardLayout.show(pnMainCard, "pnHistory");
         resetColorButton();
         btnHistory.setBackground(Color.white);
@@ -744,11 +882,16 @@ public class HomeFrame extends javax.swing.JFrame {
 
     private void btnaddNewSlangWordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnaddNewSlangWordActionPerformed
         // TODO add your handling code here:
+        resetData();
+        mainCardLayout.show(pnMainCard, "pnAddNewSlangWord");
+        resetColorButton();
+        btnaddNewSlangWord.setBackground(Color.white);
         
     }//GEN-LAST:event_btnaddNewSlangWordActionPerformed
 
     private void btnRandomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRandomActionPerformed
         // TODO add your handling code here:
+        resetData();
         mainCardLayout.show(pnMainCard, "pnRandom");
         resetColorButton();
         btnRandom.setBackground(Color.white);
@@ -756,6 +899,7 @@ public class HomeFrame extends javax.swing.JFrame {
 
     private void btnModifyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModifyActionPerformed
         // TODO add your handling code here:
+        resetData();
         mainCardLayout.show(pnMainCard, "pnModify");
         resetColorButton();
         btnModify.setBackground(Color.white);
@@ -763,6 +907,7 @@ public class HomeFrame extends javax.swing.JFrame {
 
     private void btnQuizActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuizActionPerformed
         // TODO add your handling code here:
+        resetData();
     }//GEN-LAST:event_btnQuizActionPerformed
 
     private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
@@ -927,6 +1072,48 @@ public class HomeFrame extends javax.swing.JFrame {
         dlDelete.setVisible(false);
     }//GEN-LAST:event_btnCloseConfirmDeleteActionPerformed
 
+    private void btnActionAddSlangWordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActionAddSlangWordActionPerformed
+        // TODO add your handling code here:
+        if (tbSlangWordAddNew.getText().compareTo("") == 0){
+            JOptionPane.showMessageDialog(null, "Slang word cannot be empty!!!", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        if (tbDefinitionAddNew.getText().compareTo("") == 0){
+            JOptionPane.showMessageDialog(null, "Definitions cannot be empty!!!", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        if (slHandler.checkSlangWordExist(tbSlangWordAddNew.getText())){
+            dlConfirmAddSlangWord.setVisible(true);
+        }
+        else{
+            slHandler.addSlangWord(tbSlangWordAddNew.getText(), tbDefinitionAddNew.getText(), 0);
+            JOptionPane.showMessageDialog(null, "Added slang word successfully!!!");
+            resetData();
+        }
+    }//GEN-LAST:event_btnActionAddSlangWordActionPerformed
+
+    private void btnOverWriteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOverWriteActionPerformed
+        // TODO add your handling code here:
+        slHandler.addSlangWord(tbSlangWordAddNew.getText(), tbDefinitionAddNew.getText(), 1);
+        dlConfirmAddSlangWord.setVisible(false);
+        JOptionPane.showMessageDialog(null, "Overwrite slang word successfully!!!");
+        resetData();
+    }//GEN-LAST:event_btnOverWriteActionPerformed
+
+    private void btnDuplicateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDuplicateActionPerformed
+        // TODO add your handling code here:
+        slHandler.addSlangWord(tbSlangWordAddNew.getText(), tbDefinitionAddNew.getText(), 2);
+        dlConfirmAddSlangWord.setVisible(false);
+        JOptionPane.showMessageDialog(null, "Duplicate slang word successfully!!!");      
+        resetData();
+    }//GEN-LAST:event_btnDuplicateActionPerformed
+
+    private void btnCloseConfirmAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseConfirmAddActionPerformed
+        // TODO add your handling code here:
+        dlConfirmAddSlangWord.setVisible(false);
+    }//GEN-LAST:event_btnCloseConfirmAddActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -963,13 +1150,17 @@ public class HomeFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnActionAddSlangWord;
+    private javax.swing.JButton btnCloseConfirmAdd;
     private javax.swing.JButton btnCloseConfirmDelete;
     private javax.swing.JButton btnCloseConfirmReset;
     private javax.swing.JButton btnDeleteSlangWord;
+    private javax.swing.JButton btnDuplicate;
     private javax.swing.JButton btnHistory;
     private javax.swing.JButton btnModify;
     private javax.swing.JButton btnOkeConfirmDelete;
     private javax.swing.JButton btnOkeConfirmReset;
+    private javax.swing.JButton btnOverWrite;
     private javax.swing.JButton btnQuiz;
     private javax.swing.JButton btnRandom;
     private javax.swing.JButton btnRandomAction;
@@ -981,10 +1172,15 @@ public class HomeFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnSearchKeySlangModify;
     private javax.swing.JButton btnUpdateSlangWord;
     private javax.swing.JButton btnaddNewSlangWord;
+    private javax.swing.JDialog dlConfirmAddSlangWord;
     private javax.swing.JDialog dlDelete;
     private javax.swing.JDialog dlReset;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -998,6 +1194,7 @@ public class HomeFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JTextArea lbHistoryResult;
     private javax.swing.JTextArea lbResult;
@@ -1014,7 +1211,9 @@ public class HomeFrame extends javax.swing.JFrame {
     private javax.swing.JPanel pnSearchByDefinition;
     private javax.swing.JPanel pnSearchBySlang;
     private javax.swing.JTextField tbDefinition;
+    private javax.swing.JTextArea tbDefinitionAddNew;
     private javax.swing.JTextField tbSlangWord;
+    private javax.swing.JTextField tbSlangWordAddNew;
     private javax.swing.JTextField tbSlangWordModify;
     // End of variables declaration//GEN-END:variables
 }
