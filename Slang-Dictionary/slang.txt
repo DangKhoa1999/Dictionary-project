@@ -1,7 +1,7 @@
  HK`Hong Kong| Hostile Kids
  MCR`My Chemical Romance (band)
 #1`Number one
-$`sss
+$`Dollar| money
 $_$`Has money
 %)`Drunk| giddy
 &`And
@@ -74,7 +74,6 @@ $_$`Has money
 10CHAR`Padding where at least 10 characters are required
 10Q`Thank you
 10X`Thanks
-115`Hot| cold
 1AAT`One At A Time
 1D`One Direction (band)
 1UP`Extra life in a game
@@ -110,7 +109,7 @@ $_$`Has money
 401K`Retirement investment plan
 4CHAN`Internet message/image board
 4COL`For Crying Out Loud
-4E4`Forever
+4E4`ForeverTest12
 4EVA`Forever
 4EVER`Forever
 4G`4th Generation
@@ -137,7 +136,6 @@ $_$`Has money
 8-)`Cool 
 8-|`Nerdy 
 80S`The Eighties| 1980s
-89`po
 8====D`Penis
 8===D`A Penis
 8BALL`1/8 ounce of cocaine
@@ -256,8 +254,8 @@ A2DP`Advanced Audio Distribution Profile
 A3`Anywhere, Any time, Any place
 A7A`Frusration, anger
 A7X`Avenged Sevenfold (band)
-AA`AA
-AAA`AmericanAutomobileAssociation| Batterysize
+AA`Alcoholics Anonymous| African-American| Automobile Association
+AAA`American Automobile Association| Battery size
 AAB`Average At Best
 AAC`Apple Audio Compression
 AAF`Always and Forever
@@ -7635,7 +7633,7 @@ ZZZ`Sleepy| bored| tired
 ^_^`Happiness| satisfied
 ^_~`Wink
 ^~^`Mischievous Smile
-aa`AAA
+po`poNew
 |O|`LOL
 }:-)`Devilish smile
 ~`Denotes Sarcasm| Put At The End Of A Word To Make It Longer
