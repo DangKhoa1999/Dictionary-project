@@ -24,7 +24,7 @@ public class ReadWriteFile {
         FileWriter fileWriter = null;
         BufferedWriter bufferedWriter = null;
         try{
-            fileWriter = new FileWriter("data.txt");
+            fileWriter = new FileWriter("slang.txt");
             bufferedWriter = new BufferedWriter(fileWriter);
             for (Map.Entry<String, String[]> entry : treeMap.entrySet()){
                 bufferedWriter.write(entry.getKey() + "`");
@@ -57,7 +57,7 @@ public class ReadWriteFile {
        BufferedReader bufferedReader = null;
        TreeMap<String, String[]> mapData = new TreeMap<String, String[]>();
        try{
-           fileReader = new FileReader("data.txt");
+           fileReader = new FileReader("slang.txt");
            bufferedReader = new BufferedReader(fileReader);
            String line;
            while ((line = bufferedReader.readLine()) != null){

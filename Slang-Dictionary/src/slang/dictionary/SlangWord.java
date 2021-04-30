@@ -51,9 +51,6 @@ public class SlangWord {
     }
     
     public void saveHistoryData(String keyWord){
-        if (listHitoryData.contains(keyWord)){
-            return;
-        }
         listHitoryData.add(0, keyWord);
         handlerFile.saveHistoryData(listHitoryData);
     }
