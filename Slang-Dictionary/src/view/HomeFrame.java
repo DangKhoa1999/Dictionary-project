@@ -81,7 +81,9 @@ public class HomeFrame extends javax.swing.JFrame {
         tbDefinitionAddNew.setText("");
         tbDefinition.setText("");
         tbSlangWord.setText("");
+        tbSlangWordModify.setText("");
         lbResultRandom.setText("");
+        lbResultModify.setText("");
         pnShowContentQuiz.setVisible(false);
     }
 
@@ -1200,6 +1202,10 @@ public class HomeFrame extends javax.swing.JFrame {
     private void btnRandomActionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRandomActionActionPerformed
         // TODO add your handling code here:
         List<String> resultData = slHandler.randomSlangWords();
+        if (resultData.size() == 0){
+            JOptionPane.showMessageDialog(null, "Sorry, there is no slang word for random!!!", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
         String rs = "Slang word: " + resultData.get(0) + "\n" + "Definitions: ";
         for (int i = 1; i < resultData.size(); i++){
             rs += resultData.get(i);
@@ -1328,19 +1334,24 @@ public class HomeFrame extends javax.swing.JFrame {
 
     private void btnActionQuizActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActionQuizActionPerformed
         // TODO add your handling code here:
-        pnShowContentQuiz.setVisible(true);
         List<String> listAnswer = null;
         int answer = rd.nextInt(4);
         correctAnswer = answer;
-        
         if (rdSlangWord.isSelected()){
             listAnswer = slHandler.quizWithSlangWord();
+            if (listAnswer.size() == 0){
+                return;
+            }
             lbQuestion.setText("Which definition is of slang word '" + listAnswer.get(0) + "' ?");
         }
         else{
             listAnswer = slHandler.quizWithDefinition();
+            if (listAnswer.size() == 0){
+                return;
+            }
             lbQuestion.setText("Which slang word is the definition of '" + listAnswer.get(0) + "' ?");
         }
+        pnShowContentQuiz.setVisible(true);
         
         if (answer == 0){
             btnAS1.setText(listAnswer.get(1));

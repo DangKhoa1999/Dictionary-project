@@ -65,10 +65,13 @@ public class SlangWord {
     }
     
     public List<String> randomSlangWords(){
+        List<String> resultData = new ArrayList<String>();
+        if (treeData.size() == 0){
+            return resultData;
+        }
         Random rd = new Random();
         int numOfRandom = rd.nextInt(treeData.size());
         List<String> slangRandom = new ArrayList<String>(treeData.keySet());
-        List<String> resultData = new ArrayList<String>();
         String key = slangRandom.get(numOfRandom);
         resultData.add(key); 
         
@@ -133,10 +136,13 @@ public class SlangWord {
     }
     
     public List<String> quizWithSlangWord(){
+        List<String> resultData = new ArrayList<String>();
+        if (treeData.size() < 5){
+            return resultData;
+        }
         Random rd = new Random();
         int numOfRandom = rd.nextInt(treeData.size());
         List<String> slangRandom = new ArrayList<String>(treeData.keySet());
-        List<String> resultData = new ArrayList<String>();
         String key = slangRandom.get(numOfRandom);
         String[] listTemp = treeData.get(key);
         resultData.add(key);     
@@ -157,10 +163,15 @@ public class SlangWord {
     }
     
      public List<String> quizWithDefinition(){
+        List<String> resultData = new ArrayList<String>();
+        if (treeData.size() < 5){
+            return resultData;
+        }
+        
         Random rd = new Random();
         int numOfRandom = rd.nextInt(treeData.size());
         List<String> slangRandom = new ArrayList<String>(treeData.keySet());
-        List<String> resultData = new ArrayList<String>();
+        
         
         String key = slangRandom.get(numOfRandom);
         String[] listTemp = treeData.get(key);

@@ -154,7 +154,7 @@ public class ReadWriteFile {
     public void resetData(){
         FileWriter fileWriter = null;
         try{
-            fileWriter = new FileWriter("data.txt");
+            fileWriter = new FileWriter("slang.txt");
         }
         catch(Exception e){
             e.printStackTrace();
