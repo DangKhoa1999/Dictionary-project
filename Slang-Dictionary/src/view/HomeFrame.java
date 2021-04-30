@@ -37,6 +37,7 @@ public class HomeFrame extends javax.swing.JFrame {
         dlReset.setLocationRelativeTo(null);
         dlDelete.setLocationRelativeTo(null);
         dlConfirmAddSlangWord.setLocationRelativeTo(null);
+        dlConfirmContinueQuiz.setLocationRelativeTo(null);
         mainCardLayout = (CardLayout)(pnMainCard.getLayout());
         btnSearchBySlang.setBackground(Color.white);
         mainCardLayout.show(pnMainCard, "pnSearchBySlang");
@@ -105,6 +106,10 @@ public class HomeFrame extends javax.swing.JFrame {
         btnDuplicate = new javax.swing.JButton();
         btnCloseConfirmAdd = new javax.swing.JButton();
         buttonGroup1 = new javax.swing.ButtonGroup();
+        dlConfirmContinueQuiz = new javax.swing.JDialog();
+        jLabel15 = new javax.swing.JLabel();
+        btnYesQuiz = new javax.swing.JButton();
+        btnNoQuiz = new javax.swing.JButton();
         jSplitPane1 = new javax.swing.JSplitPane();
         panelSidebar = new javax.swing.JPanel();
         btnSearchByDefinition = new javax.swing.JButton();
@@ -165,8 +170,8 @@ public class HomeFrame extends javax.swing.JFrame {
         jScrollPane7 = new javax.swing.JScrollPane();
         lbQuestion = new javax.swing.JTextArea();
         btnAS1 = new javax.swing.JButton();
-        btnAS2 = new javax.swing.JButton();
         btnAS3 = new javax.swing.JButton();
+        btnAS2 = new javax.swing.JButton();
         btnAS4 = new javax.swing.JButton();
 
         dlReset.setTitle("Warning");
@@ -333,6 +338,56 @@ public class HomeFrame extends javax.swing.JFrame {
                     .addComponent(btnDuplicate, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCloseConfirmAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(27, Short.MAX_VALUE))
+        );
+
+        dlConfirmContinueQuiz.setTitle("Notification");
+        dlConfirmContinueQuiz.setIconImage(null);
+        dlConfirmContinueQuiz.setMinimumSize(new java.awt.Dimension(400, 150));
+        dlConfirmContinueQuiz.setModal(true);
+
+        jLabel15.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel15.setText("The answer is incorrect, do you want to continue?");
+
+        btnYesQuiz.setBackground(new java.awt.Color(153, 255, 153));
+        btnYesQuiz.setText("Yes");
+        btnYesQuiz.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnYesQuizActionPerformed(evt);
+            }
+        });
+
+        btnNoQuiz.setText("No");
+        btnNoQuiz.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNoQuizActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout dlConfirmContinueQuizLayout = new javax.swing.GroupLayout(dlConfirmContinueQuiz.getContentPane());
+        dlConfirmContinueQuiz.getContentPane().setLayout(dlConfirmContinueQuizLayout);
+        dlConfirmContinueQuizLayout.setHorizontalGroup(
+            dlConfirmContinueQuizLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dlConfirmContinueQuizLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel15)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(dlConfirmContinueQuizLayout.createSequentialGroup()
+                .addGap(49, 49, 49)
+                .addComponent(btnYesQuiz, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnNoQuiz, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(51, 51, 51))
+        );
+        dlConfirmContinueQuizLayout.setVerticalGroup(
+            dlConfirmContinueQuizLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dlConfirmContinueQuizLayout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(jLabel15)
+                .addGap(18, 18, 18)
+                .addGroup(dlConfirmContinueQuizLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnNoQuiz, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnYesQuiz, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -892,12 +947,32 @@ public class HomeFrame extends javax.swing.JFrame {
 
         btnAS1.setBackground(new java.awt.Color(204, 204, 204));
         btnAS1.setToolTipText("");
-
-        btnAS2.setBackground(new java.awt.Color(204, 204, 204));
+        btnAS1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAS1ActionPerformed(evt);
+            }
+        });
 
         btnAS3.setBackground(new java.awt.Color(204, 204, 204));
+        btnAS3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAS3ActionPerformed(evt);
+            }
+        });
+
+        btnAS2.setBackground(new java.awt.Color(204, 204, 204));
+        btnAS2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAS2ActionPerformed(evt);
+            }
+        });
 
         btnAS4.setBackground(new java.awt.Color(204, 204, 204));
+        btnAS4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAS4ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnShowContentQuizLayout = new javax.swing.GroupLayout(pnShowContentQuiz);
         pnShowContentQuiz.setLayout(pnShowContentQuizLayout);
@@ -907,10 +982,10 @@ public class HomeFrame extends javax.swing.JFrame {
                 .addGap(32, 32, 32)
                 .addGroup(pnShowContentQuizLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnAS1, javax.swing.GroupLayout.DEFAULT_SIZE, 237, Short.MAX_VALUE)
-                    .addComponent(btnAS2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnAS3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(pnShowContentQuizLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnAS3, javax.swing.GroupLayout.DEFAULT_SIZE, 237, Short.MAX_VALUE)
+                    .addComponent(btnAS2, javax.swing.GroupLayout.DEFAULT_SIZE, 237, Short.MAX_VALUE)
                     .addComponent(btnAS4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(pnShowContentQuizLayout.createSequentialGroup()
@@ -925,10 +1000,10 @@ public class HomeFrame extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(pnShowContentQuizLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnAS1, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAS3, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnAS2, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(36, 36, 36)
                 .addGroup(pnShowContentQuizLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnAS2, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAS3, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAS4, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(42, Short.MAX_VALUE))
         );
@@ -962,8 +1037,6 @@ public class HomeFrame extends javax.swing.JFrame {
                 .addComponent(pnShowContentQuiz, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
-
-        jPanel4.getAccessibleContext().setAccessibleName("Quiz with");
 
         pnMainCard.add(pnQuiz, "pnQuiz");
 
@@ -1254,41 +1327,95 @@ public class HomeFrame extends javax.swing.JFrame {
     private void btnActionQuizActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActionQuizActionPerformed
         // TODO add your handling code here:
         pnShowContentQuiz.setVisible(true);
+        List<String> listAnswer = null;
+        int answer = rd.nextInt(4);
+        correctAnswer = answer;
+        
         if (rdSlangWord.isSelected()){
-            List<String> listAnswer = slHandler.quizWithSlangWord();
-            lbQuestion.setText("Which definition is of slang word '" + listAnswer.get(0) + "'");
-            int answer = rd.nextInt(4);
-            correctAnswer = answer;
-            if (answer == 0){
-                btnAS1.setText(listAnswer.get(1));
-                btnAS2.setText(listAnswer.get(2));
-                btnAS3.setText(listAnswer.get(3));
-                btnAS4.setText(listAnswer.get(4));
-            }
-            else if (answer == 1){
-                btnAS1.setText(listAnswer.get(2));
-                btnAS2.setText(listAnswer.get(1));
-                btnAS3.setText(listAnswer.get(3));
-                btnAS4.setText(listAnswer.get(4));
-            }
-            else if (answer == 2){
-                btnAS1.setText(listAnswer.get(2));
-                btnAS2.setText(listAnswer.get(3));
-                btnAS3.setText(listAnswer.get(1));
-                btnAS4.setText(listAnswer.get(4));
-            }
-            else{
-                btnAS1.setText(listAnswer.get(2));
-                btnAS2.setText(listAnswer.get(3));
-                btnAS3.setText(listAnswer.get(4));
-                btnAS4.setText(listAnswer.get(1));
-            }
+            listAnswer = slHandler.quizWithSlangWord();
+            lbQuestion.setText("Which definition is of slang word '" + listAnswer.get(0) + "' ?");
         }
         else{
-            
+            listAnswer = slHandler.quizWithDefinition();
+            lbQuestion.setText("Which slang word is the definition of '" + listAnswer.get(0) + "' ?");
         }
         
+        if (answer == 0){
+            btnAS1.setText(listAnswer.get(1));
+            btnAS2.setText(listAnswer.get(2));
+            btnAS3.setText(listAnswer.get(3));
+            btnAS4.setText(listAnswer.get(4));
+        }
+        else if (answer == 1){
+            btnAS1.setText(listAnswer.get(2));
+            btnAS2.setText(listAnswer.get(1));
+            btnAS3.setText(listAnswer.get(3));
+            btnAS4.setText(listAnswer.get(4));
+        }
+        else if (answer == 2){
+            btnAS1.setText(listAnswer.get(2));
+            btnAS2.setText(listAnswer.get(3));
+            btnAS3.setText(listAnswer.get(1));
+            btnAS4.setText(listAnswer.get(4));
+        }
+        else{
+            btnAS1.setText(listAnswer.get(2));
+            btnAS2.setText(listAnswer.get(3));
+            btnAS3.setText(listAnswer.get(4));
+            btnAS4.setText(listAnswer.get(1));
+        } 
     }//GEN-LAST:event_btnActionQuizActionPerformed
+
+    private void btnAS1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAS1ActionPerformed
+        // TODO add your handling code here:
+        if (correctAnswer == 0){
+            JOptionPane.showMessageDialog(null, "Congratulations, the answer is absolutely correct !!!!!!");
+            resetData();
+        }else{
+            dlConfirmContinueQuiz.setVisible(true);          
+        }
+    }//GEN-LAST:event_btnAS1ActionPerformed
+
+    private void btnAS2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAS2ActionPerformed
+        // TODO add your handling code here:
+        if (correctAnswer == 1){
+            JOptionPane.showMessageDialog(null, "Congratulations, the answer is absolutely correct !!!!!!");  
+            resetData();
+        }else{
+            dlConfirmContinueQuiz.setVisible(true);
+        }
+    }//GEN-LAST:event_btnAS2ActionPerformed
+
+    private void btnAS3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAS3ActionPerformed
+        // TODO add your handling code here:
+        if (correctAnswer == 2){
+            JOptionPane.showMessageDialog(null, "Congratulations, the answer is absolutely correct !!!!!!");     
+            resetData();
+        }else{
+            dlConfirmContinueQuiz.setVisible(true);          
+        }
+    }//GEN-LAST:event_btnAS3ActionPerformed
+
+    private void btnAS4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAS4ActionPerformed
+        // TODO add your handling code here:
+        if (correctAnswer == 3){
+            JOptionPane.showMessageDialog(null, "Congratulations, the answer is absolutely correct !!!!!!");
+            resetData();
+        }else{
+            dlConfirmContinueQuiz.setVisible(true);
+        }
+    }//GEN-LAST:event_btnAS4ActionPerformed
+
+    private void btnYesQuizActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnYesQuizActionPerformed
+        // TODO add your handling code here:
+        dlConfirmContinueQuiz.setVisible(false);
+    }//GEN-LAST:event_btnYesQuizActionPerformed
+
+    private void btnNoQuizActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNoQuizActionPerformed
+        // TODO add your handling code here:
+        dlConfirmContinueQuiz.setVisible(false);
+        resetData();
+    }//GEN-LAST:event_btnNoQuizActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1339,6 +1466,7 @@ public class HomeFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnDuplicate;
     private javax.swing.JButton btnHistory;
     private javax.swing.JButton btnModify;
+    private javax.swing.JButton btnNoQuiz;
     private javax.swing.JButton btnOkeConfirmDelete;
     private javax.swing.JButton btnOkeConfirmReset;
     private javax.swing.JButton btnOverWrite;
@@ -1352,9 +1480,11 @@ public class HomeFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnSearchKeySlang;
     private javax.swing.JButton btnSearchKeySlangModify;
     private javax.swing.JButton btnUpdateSlangWord;
+    private javax.swing.JButton btnYesQuiz;
     private javax.swing.JButton btnaddNewSlangWord;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JDialog dlConfirmAddSlangWord;
+    private javax.swing.JDialog dlConfirmContinueQuiz;
     private javax.swing.JDialog dlDelete;
     private javax.swing.JDialog dlReset;
     private javax.swing.JLabel jLabel1;
@@ -1363,6 +1493,7 @@ public class HomeFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

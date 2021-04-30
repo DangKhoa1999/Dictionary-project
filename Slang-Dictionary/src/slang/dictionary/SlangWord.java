@@ -158,4 +158,28 @@ public class SlangWord {
         }
         return resultData;
     }
+    
+     public List<String> quizWithDefinition(){
+        Random rd = new Random();
+        int numOfRandom = rd.nextInt(treeData.size());
+        List<String> slangRandom = new ArrayList<String>(treeData.keySet());
+        List<String> resultData = new ArrayList<String>();
+        
+        String key = slangRandom.get(numOfRandom);
+        String[] listTemp = treeData.get(key);
+        resultData.add(listTemp[0]);     
+        resultData.add(key);
+        
+        List<Integer> existKey = new ArrayList<Integer>();
+        existKey.add(numOfRandom);
+        while(resultData.size() < 5){
+            int keyRandom = rd.nextInt(treeData.size());
+            if (existKey.contains(keyRandom) == false){
+                existKey.add(keyRandom);
+                key = slangRandom.get(keyRandom);
+                resultData.add(key);
+            }
+        }
+        return resultData;
+    }
 }
